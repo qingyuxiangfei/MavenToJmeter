@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testResults version="1.2">
+<httpSample t="247" it="0" lt="247" ct="118" ts="1551684624378" s="true" lb="HTTP登录请求" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="351" sby="466" sc="1" ec="0" ng="1" na="1" hn="Y3X8LPMFYHZDU1M">
+  <responseHeader class="java.lang.String">HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 04 Mar 2019 07:30:27 GMT
+</responseHeader>
+  <requestHeader class="java.lang.String">Connection: keep-alive
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 235
+Host: m.lemonban.com:8380
+User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_77)
+</requestHeader>
+  <responseData class="java.lang.String">{&quot;status&quot;:1,&quot;code&quot;:&quot;1001&quot;,&quot;data&quot;:{&quot;mobilephone&quot;:&quot;13673716634&quot;,&quot;nickname&quot;:&quot;清宇翔飞&quot;,&quot;id&quot;:4003643,&quot;portrait&quot;:&quot;&quot;,&quot;token&quot;:&quot;fe8fb322cde642d4b9fecc18c142829e&quot;},&quot;msg&quot;:&quot;app登录成功&quot;}</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <cookies class="java.lang.String"></cookies>
+  <method class="java.lang.String">POST</method>
+  <queryString class="java.lang.String">mobilephone=13673716634&amp;password=Kvzt2A7haujE9V5XwqxWDpeIYdUrz0x4ZKXfwkAR1%2BSdUUWCUkaWUMsO7lPZSyWqqG7i0D%2F9M4I7%0D%0AY%2Fbsza%2BikW4Ep8JOPJc3uvVs92CgQfSRqv6tbucLarFG7Sz7KEkxkrn%2Bu7RjCLNHc8LD4z4hatRK%0D%0AaWrQpQWpmct1NONLwrw%3D%0D%0A</queryString>
+  <java.net.URL>http://m.lemonban.com:8380//lmcanon/mvc/member/api/member/applogin</java.net.URL>
+</httpSample>
+<sample t="8" it="0" lt="0" ct="0" ts="1551684624642" s="true" lb="BeanShell Sampler" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="0" sby="0" sc="1" ec="0" ng="1" na="1" hn="Y3X8LPMFYHZDU1M">
+  <responseHeader class="java.lang.String"></responseHeader>
+  <requestHeader class="java.lang.String"></requestHeader>
+  <responseData class="java.lang.String"></responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <samplerData class="java.lang.String">import com.lemon.encryption.RSAManager;
+//时间戳
+long timestamp=System.currentTimeMillis();
+//获取token
+String tokenString=vars.get(&quot;token&quot;);
+log.info(&quot;token 值为：&quot;+tokenString);
+//RSA 加密,将
+String sign=timestamp+tokenString;
+String encryptSign=RSAManager.encryptWithBase64(sign);
+log.info(&quot;加密后的签名为：&quot;+encryptSign);
+//把加密后的签名，时间戳保存到vars变量中
+vars.put(&quot;encryptSign&quot;,encryptSign);
+vars.put(&quot;timestamp&quot;,timestamp+&quot;&quot;);
+</samplerData>
+</sample>
+<httpSample t="90" it="0" lt="90" ct="0" ts="1551684624653" s="true" lb="HTTP获取本周课表请求" rc="200" rm="OK" tn="线程组 1-1" dt="text" by="246" sby="435" sc="1" ec="0" ng="1" na="1" hn="Y3X8LPMFYHZDU1M">
+  <responseHeader class="java.lang.String">HTTP/1.1 200 OK
+Server: Apache-Coyote/1.1
+Content-Type: application/json;charset=UTF-8
+Transfer-Encoding: chunked
+Date: Mon, 04 Mar 2019 07:30:27 GMT
+</responseHeader>
+  <requestHeader class="java.lang.String">Connection: keep-alive
+Host: m.lemonban.com:8380
+User-Agent: Apache-HttpClient/4.5.3 (Java/1.8.0_77)
+</requestHeader>
+  <responseData class="java.lang.String">{&quot;status&quot;:1,&quot;code&quot;:&quot;1001&quot;,&quot;data&quot;:{&quot;flag&quot;:2,&quot;classes&quot;:[]},&quot;msg&quot;:&quot;请求成功&quot;}</responseData>
+  <responseFile class="java.lang.String"></responseFile>
+  <cookies class="java.lang.String"></cookies>
+  <method class="java.lang.String">GET</method>
+  <queryString class="java.lang.String"></queryString>
+  <java.net.URL>http://m.lemonban.com:8380//lmcanon/mvc/course/api/course/weeklyCoursePlan?token=fe8fb322cde642d4b9fecc18c142829e&amp;timestamp=1551684624645&amp;sign=uWvc3nE9DFChfAGAI6rXez5xtZdVEkUZS5rbGI0kJoejLZxXixi9ZkMNs24c%2BEQ3iEA2yYtPVVHj%0D%0APp8kONDFgUf6L408ZrrOVismRDjQu1gLhe3fxlgOkZ%2F9ljCeNcVnjTX3S7xAy0kzdPrlWBoBa%2Feg%0D%0A8WLD7rSCQcmFVl7hyvs%3D%0D%0A</java.net.URL>
+</httpSample>
+
+</testResults>
