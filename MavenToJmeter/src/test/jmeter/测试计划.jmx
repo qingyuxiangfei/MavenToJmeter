@@ -230,6 +230,7 @@ String sign=timestamp+tokenString;
 String encryptSign=RSAManager.encryptWithBase64(sign);
 log.info(&quot;加密后的签名为：&quot;+encryptSign);
 //把加密后的签名，时间戳保存到vars变量中
+log.info(&quot;token 值为：&quot;+tokenString);
 vars.put(&quot;encryptSign&quot;,encryptSign);
 vars.put(&quot;timestamp&quot;,timestamp+&quot;&quot;);
 </stringProp>
